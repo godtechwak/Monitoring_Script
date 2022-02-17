@@ -5,14 +5,14 @@ CREATE PROC [dbo].[SP_CHECK_MEMORY]
 @limit INT
 AS        
  DECLARE @Text NVARCHAR(MAX)        
-        ,@physical_memory_gb INT -- ½Ã½ºÅÛ ¹°¸® ¸Ş¸ğ¸®        
-        ,@committed_target_gb INT -- SQL Server ÃÖ´ë ¸Ş¸ğ¸®        
-        ,@committed_gb INT -- SQL Server ÇöÀç ¸Ş¸ğ¸®        
-        ,@available_physical_memory_gb INT -- »ç¿ë °¡´ÉÇÑ ¸Ş¸ğ¸®        
+        ,@physical_memory_gb INT -- ì‹œìŠ¤í…œ ë¬¼ë¦¬ ë©”ëª¨ë¦¬        
+        ,@committed_target_gb INT -- SQL Server ìµœëŒ€ ë©”ëª¨ë¦¬        
+        ,@committed_gb INT -- SQL Server í˜„ì¬ ë©”ëª¨ë¦¬        
+        ,@available_physical_memory_gb INT -- ì‚¬ìš© ê°€ëŠ¥í•œ ë©”ëª¨ë¦¬        
         ,@system_memory_state_desc VARCHAR(100)        
         ,@usage_percent INT        
  
- -- SQL Server ÇöÀç ¸Ş¸ğ¸®/SQL Server ÃÖ´ë ¸Ş¸ğ¸®
+ -- SQL Server í˜„ì¬ ë©”ëª¨ë¦¬/SQL Server ìµœëŒ€ ë©”ëª¨ë¦¬
  SELECT @usage_percent = CEILING(((A.committed_kb * 1.0 / 1024 / 1024)/(A.committed_target_kb * 1.0 / 1024 / 1024) * 100))        
    FROM sys.dm_os_sys_info AS A         
         
@@ -26,17 +26,17 @@ AS
        FROM sys.dm_os_sys_info   as A         
       CROSS JOIN sys.dm_os_sys_memory as B        
         
-     SELECT @Text = N'<°ÔÀÓÀ¥DB ¸Ş¸ğ¸® »ç¿ë·®>' + CHAR(10) +        
-                    N'½Ã½ºÅÛ ¹°¸® ¸Ş¸ğ¸® = ' + CONVERT(NVARCHAR(3), @physical_memory_gb) + '(GB)' + CHAR(10) +        
-                    N'SQL Server ÃÖ´ë ¸Ş¸ğ¸® = ' +  CONVERT(NVARCHAR(3), @committed_target_gb) + '(GB)' + CHAR(10) +        
-                    N'SQL Server ÇöÀç ¸Ş¸ğ¸® = ' +  CONVERT(NVARCHAR(3), @committed_gb) + '(GB)' + CHAR(10) +        
-                    N'»ç¿ë °¡´ÉÇÑ ¸Ş¸ğ¸® = ' +  CONVERT(NVARCHAR(3), @available_physical_memory_gb) + '(GB)' + CHAR(10) +        
-                    N'¸Ş¸ğ¸® »ç¿ëÀ² = ' + CONVERT(NVARCHAR(3), @usage_percent) + '%' + CHAR(10) +        
-                    N'½Ã½ºÅÛ ¸Ş¸ğ¸® »óÅÂ = ' +  @system_memory_state_desc        
+     SELECT @Text = N'<ê²Œì„ì›¹DB ë©”ëª¨ë¦¬ ì‚¬ìš©ëŸ‰>' + CHAR(10) +        
+                    N'ì‹œìŠ¤í…œ ë¬¼ë¦¬ ë©”ëª¨ë¦¬ = ' + CONVERT(NVARCHAR(3), @physical_memory_gb) + '(GB)' + CHAR(10) +        
+                    N'SQL Server ìµœëŒ€ ë©”ëª¨ë¦¬ = ' +  CONVERT(NVARCHAR(3), @committed_target_gb) + '(GB)' + CHAR(10) +        
+                    N'SQL Server í˜„ì¬ ë©”ëª¨ë¦¬ = ' +  CONVERT(NVARCHAR(3), @committed_gb) + '(GB)' + CHAR(10) +        
+                    N'ì‚¬ìš© ê°€ëŠ¥í•œ ë©”ëª¨ë¦¬ = ' +  CONVERT(NVARCHAR(3), @available_physical_memory_gb) + '(GB)' + CHAR(10) +        
+                    N'ë©”ëª¨ë¦¬ ì‚¬ìš©ìœ¨ = ' + CONVERT(NVARCHAR(3), @usage_percent) + '%' + CHAR(10) +        
+                    N'ì‹œìŠ¤í…œ ë©”ëª¨ë¦¬ ìƒíƒœ = ' +  @system_memory_state_desc        
                 
           
 	  EXEC msdb.dbo.sp_send_dbmail        
-		   @profile_name = 'ÇÁ·ÎÇÊ¸í',        
+		   @profile_name = 'í”„ë¡œí•„ëª…',        
 		   @recipients = 'test@naver.com',        
 		   @Body = @Text,        
 		   @subject = '[game_web] Memory Usage is High'        
