@@ -55,16 +55,16 @@ WHERE a.name   = 'XE_QUERY'
    IF EXISTS(SELECT * FROM @Slow_Query)      
    BEGIN      
      SET @tablehtml=        
-      N'<h1>[°ΤΐΣΐ¥DB] ½½·ΞΏμ ΔυΈ®</h1>'+        
+      N'<h1>[κ²μ„μ›ΉDB] μ¬λ΅μ° μΏΌλ¦¬</h1>'+        
       N'<table border="1">'+        
       N'<tr>'+        
-      N'<th>Ό­ΉφΈν</th>'+        
-      N'<th>½Γ°£</th>'+        
-      N'<th>ΑφΏ¬½Γ°£</th>'+        
-      N'<th>ΓΡ ROW Όφ</th>'+        
-      N'<th>µ¥ΐΜΕΝΊ£ΐΜ½ΊΈν</th>'+        
-	  N'<th>»ηΏλΐΪΈν</th>'+        
-      N'<th>ΔυΈ®Ή®</th>'+        
+      N'<th>μ„λ²„λª…</th>'+        
+      N'<th>μ‹κ°„</th>'+        
+      N'<th>μ§€μ—°μ‹κ°„</th>'+        
+      N'<th>μ΄ ROW μ</th>'+        
+      N'<th>λ°μ΄ν„°λ² μ΄μ¤λª…</th>'+        
+	  N'<th>μ‚¬μ©μλª…</th>'+        
+      N'<th>μΏΌλ¦¬λ¬Έ</th>'+        
       '</tr>'+        
       CAST((        
        SELECT td=servername,'',            
