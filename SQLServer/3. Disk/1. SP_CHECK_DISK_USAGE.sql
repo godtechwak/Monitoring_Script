@@ -106,15 +106,15 @@ BEGIN
   IF EXISTS(SELECT * FROM @Driveslist WHERE CAST(FreeSpaceMB/1024.0 AS DECIMAL(10,2)) < CAST(TotalSizeMB/1024.0 AS DECIMAL(10,2)) * 0.25)    
   BEGIN    
    SET @tablehtml=    
-       N'<h1>[À¥DB] µð½ºÅ© »ç¿ë·®</h1>'+    
+       N'<h1>[ì›¹DB] ë””ìŠ¤í¬ ì‚¬ìš©ëŸ‰</h1>'+    
        N'<table border="1">'+    
        N'<tr>'+    
-       N'<th>µå¶óÀÌºê</th>'+    
-       N'<th>¿©À¯µð½ºÅ©°ø°£(MB)</th>'+    
-       N'<th>ÃÑµð½ºÅ©°ø°£(MB)</th>'+    
-       N'<th>¿©À¯µð½ºÅ©°ø°£(GB)</th>'+    
-       N'<th>ÃÑµð½ºÅ©°ø°£(GB)</th>'+    
-	   N'<th>¿©À¯°ø°£(%)</th>'+    
+       N'<th>ë“œë¼ì´ë¸Œ</th>'+    
+       N'<th>ì—¬ìœ ë””ìŠ¤í¬ê³µê°„(MB)</th>'+    
+       N'<th>ì´ë””ìŠ¤í¬ê³µê°„(MB)</th>'+    
+       N'<th>ì—¬ìœ ë””ìŠ¤í¬ê³µê°„(GB)</th>'+    
+       N'<th>ì´ë””ìŠ¤í¬ê³µê°„(GB)</th>'+    
+	   N'<th>ì—¬ìœ ê³µê°„(%)</th>'+    
        '</tr>'+    
        CAST((    
               SELECT td=drive,'',        
