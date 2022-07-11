@@ -42,15 +42,15 @@ AS
   IF EXISTS(SELECT * FROM @cpu_check)  
   BEGIN  
    SET @tablehtml=    
-       N'<h1>[��DB] CPU ��뷮</h1>'+    
+       N'<h1>[웹DB] CPU 사용량</h1>'+    
        N'<table border="1">'+    
        N'<tr>'+    
-       N'<th>���ڵ� Id</th>'+    
-       N'<th>���ڵ� �ð�</th>'+    
+       N'<th>레코드 Id</th>'+    
+       N'<th>레코드 시간</th>'+    
        N'<th>System Idle(%)</th>'+    
-       N'<th>SQL Server CPU ��뷮(%)</th>'+    
-       N'<th>OS CPU ��뷮(%)</th>'+    
-    N'<th>�� CPU ��뷮(%)</th>'+    
+       N'<th>SQL Server CPU 사용량(%)</th>'+    
+       N'<th>OS CPU 사용량(%)</th>'+    
+    N'<th>총 CPU 사용량(%)</th>'+    
        '</tr>'+    
        CAST((    
               SELECT td=record_id,'',        
