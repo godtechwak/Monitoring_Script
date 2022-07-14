@@ -79,7 +79,7 @@ WHERE a.name   = 'XE_QUERY'
      )AS NVARCHAR(MAX)) + N'</table>';        
       
    EXEC msdb.dbo.sp_send_dbmail                
-		@profile_name = 'test_profile',                
+	@profile_name = 'test_profile',                
         @recipients = 'test@naver.com',            
         @body = @tablehtml,        
         @body_format = 'HTML',        
