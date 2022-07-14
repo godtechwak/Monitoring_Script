@@ -1,25 +1,25 @@
 DECLARE @account_name_param VARCHAR(100)
        ,@description_param1 VARCHAR(100)
-	   ,@email_address_param VARCHAR(100)
-	   ,@mailserver_name_param VARCHAR(100)
-	   ,@username_param VARCHAR(100)
-	   ,@password_param VARCHAR(100)
-	   ,@profile_name_param VARCHAR(100)
-	   ,@description_param2 VARCHAR(100)
-	   ,@recipients_param VARCHAR(100)
-	   ,@port_param INT
+       ,@email_address_param VARCHAR(100)
+       ,@mailserver_name_param VARCHAR(100)
+       ,@username_param VARCHAR(100)
+       ,@password_param VARCHAR(100)
+       ,@profile_name_param VARCHAR(100)
+       ,@description_param2 VARCHAR(100)
+       ,@recipients_param VARCHAR(100)
+       ,@port_param INT
 
 -- 필수 데이터 입력
 SELECT @account_name_param = '' -- ex) test_account
       ,@description_param1 = '' -- ex) test_account
-	  ,@email_address_param = '' -- ex) test@naver.com (존재하지 않는 메일 주소도 상관 없음)
-	  ,@mailserver_name_param = '' -- ex) smtp server명
-	  ,@username_param = '' -- ex) 사용자 도메인 계정 ID
-	  ,@password_param = '' -- ex) 사용자 도메인 계정 PW
-	  ,@profile_name_param = '' -- ex) test_account
-	  ,@description_param2 = '' -- ex) test_account
-	  ,@recipients_param = '' -- ex) test@naver.com (받는사람 이메일 주소)
-	  ,@port_param = 0 -- ex) 25, 7925
+      ,@email_address_param = '' -- ex) test@naver.com (존재하지 않는 메일 주소도 상관 없음)
+      ,@mailserver_name_param = '' -- ex) smtp server명
+      ,@username_param = '' -- ex) 사용자 도메인 계정 ID
+      ,@password_param = '' -- ex) 사용자 도메인 계정 PW
+      ,@profile_name_param = '' -- ex) test_account
+      ,@description_param2 = '' -- ex) test_account
+      ,@recipients_param = '' -- ex) test@naver.com (받는사람 이메일 주소)
+      ,@port_param = 0 -- ex) 25, 7925
 
 -- 1. 데이터베이스 메일 확장 저장 프로시저 활성화
 -- To enable Database Mail
